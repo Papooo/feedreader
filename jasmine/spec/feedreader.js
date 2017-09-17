@@ -34,7 +34,7 @@ $(function() {
         it('have non-empty URLs', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
-                expect(feed.url).not.toBeNull();
+                expect(feed.url).not.toBe('');
 
             });
         });
@@ -46,7 +46,7 @@ $(function() {
         it('have non-empty names', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
-                expect(feed.name).not.toBeNull();
+                expect(feed.name).not.toBe('');
             });
         });
 
@@ -105,9 +105,9 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         it('actually changes content', function(done) {
-            var html = $('.feed .entry').first().html();
+            var html = $('.feed').html();
             loadFeed(1, function() {
-                expect($('.feed .entry').first().html()).not.toBe(html);
+                expect($('.feed').html()).not.toBe(html);
                 done();
             });
         });
